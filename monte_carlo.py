@@ -18,7 +18,6 @@ def mc_call_vec(S, K, T, r, sigma, N):
 
 print(f'{'N': <10}{'price': <10}{'se': <10}{'lower': <10}{'upper': <10}')
 for N in [1_000, 100_000, 1_000_000]:
-    #print(f'{N: <10}{mc_call(100, 100, 1, 0.05, 0.2, N): >15.4f}')
     price, se = mc_call_vec(100, 100, 1, 0.05, 0.2, N)
     lower = price - 1.96 * se
     upper = price + 1.96 * se
