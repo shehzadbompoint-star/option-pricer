@@ -1,6 +1,4 @@
-import math
 import numpy as np
-from scipy.integrate import quad
 rng = np.random.default_rng()
 
 def mc_call(S, K, T, r, sigma, N):
