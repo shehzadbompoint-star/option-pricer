@@ -1,8 +1,11 @@
 import yfinance as yf
 import pandas as pd
 import numpy as np
-from scipy.stats import norm
 import matplotlib.pyplot as plt
+import os
+os.makedirs('images', exist_ok=True)
+from scipy.stats import norm
+
 
 # ticker = yf.Ticker('SPY')
 # prices = ticker.history(period='10y')
@@ -47,6 +50,7 @@ plt.plot(r_t.index, r_t)
 plt.xlabel('Date')
 plt.ylabel('Daily log return')
 plt.title('SPY Daily Log Returns, 2016-2026')
+plt.savefig('images/daily_returns.png', dpi=150, bbox_inches='tight')
 plt.figure()
 plt.hist(r_t, bins=100, density=True, label='SPY returns')
 plt.title('Distribution of SPY Daily Log Returns')
@@ -54,6 +58,7 @@ plt.xlabel('Daily log return')
 plt.ylabel('Density')
 plt.plot(x, normal_pdf, color='red', label='Normal distribution')
 plt.legend(loc = 'upper left')
+plt.savefig('images/return_distribution.png', dpi=150, bbox_inches='tight')
 plt.figure()
 plt.plot(rolling_vol.index, rolling_vol, label='21-day rolling volatility')
 plt.axhline(annual_vol, color='red', linestyle='--', label='10-year average')
@@ -62,4 +67,5 @@ plt.xlabel('Date')
 plt.ylabel('Annualised volatility')
 plt.gca().yaxis.set_major_formatter(plt.matplotlib.ticker.PercentFormatter(1.0))
 plt.legend(loc = 'upper left')
+plt.savefig('images/rolling_volatility.png', dpi=150, bbox_inches='tight')
 plt.show()
