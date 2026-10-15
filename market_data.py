@@ -19,8 +19,10 @@ r_t = np.log(close/close.shift(1)).dropna()
 print(r_t.head())
 daily_vol = r_t.std()
 annual_vol = daily_vol*np.sqrt(252)
+average_annual_return = r_t.mean() * 252
 print('daily volatility: ', daily_vol)
 print(f'annual volatility: {annual_vol:.1%}')
+print(f'average annual return: {average_annual_return:.1%}')
 
 plt.plot(r_t.index, r_t)
 plt.xlabel('Date')
